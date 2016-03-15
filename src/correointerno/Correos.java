@@ -56,6 +56,18 @@ public class Correos {
         }
     }
     
+    //Borramos los correos de un usuario
+    public void borrarcorreos(String uborrar){
+         for (int i=0;i<email.size();i++){
+            if (uborrar.equals(email.get(i).ureceptor)){
+                email.remove(i); 
+           
+            } 
+            
+        }
+         util.imprime("Todos los correos de la bandeja de este usuario estan borrados");
+    }
+    
     
     
     //Metodo para volcar correos de prueba

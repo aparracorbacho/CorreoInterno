@@ -71,7 +71,35 @@ public class CorreoInterno {
                     salir = util.smenu();
                 break;
             case 4:
-                if (user.compruebaAdmin(nuser) == 0) { util.imprime("No tienes permisos gestionar usuarios"); } else { }
+                if (user.compruebaAdmin(nuser) == 0) { util.imprime("No tienes permisos gestionar usuarios"); } else { 
+                    int saliradmin = 1;
+                    do {
+                    util.imprime("    Quieres agregar un usuario? (Opcion 1)\n    Quieres borrar un usuario? (Opcion 2)\n    Quieres ver la lista de usuarios? (Opcion 3)\n    Quieres volver al menu principal? (Opcion 0)");
+                    int Opcionadmin = util.qint();
+                    switch (Opcionadmin){
+                        case 1:
+                            user.agregar();
+                            saliradmin = util.smenu();
+                            break;
+                        case 2:
+                            String uborrar = user.borrar();
+                            correo.borrarcorreos(uborrar);
+                            saliradmin = util.smenu();
+                            break;
+                        case 3:
+                            user.verlista();
+                            saliradmin = util.smenu();
+                            break;
+                        case 0:
+                            saliradmin = 0;
+                            util.imprime("Sales de la parte de administrar usuarios.");
+                            break;
+                        default:
+                            util.imprime("No es una opcion valida, vuelve a probar");
+                            break;    
+                    }
+                    } while (saliradmin == 1);
+                }
                 break;
             case 0:
                 salir = 0;
